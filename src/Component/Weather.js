@@ -45,9 +45,9 @@ const Weather = () => {
       const response = await fetch(url);
       const data = await response.json();
 
-      if(!response.ok){
+      if (!response.ok) {
         alert(data.message);
-        return
+        return;
       }
 
       console.log(data);
@@ -79,7 +79,7 @@ const Weather = () => {
           type="text"
           placeholder="Search city"
           ref={inputRef}
-          className="search-input container-2"
+          className="container-2"
         />
         <IoIosSearch
           className="search-icon "
@@ -91,8 +91,10 @@ const Weather = () => {
         <>
           <div className="container-2">
             <img src={weatherData.icon} alt="" />
-            <p className="temperature font-1">{weatherData.temperature} °C</p>
-            <p className="location font-2">{weatherData.location} </p>
+            <div className="primary-weather">
+              <p className="temperature font-1">{weatherData.temperature} °C</p>
+              <p className="location font-2">{weatherData.location} </p>
+            </div>
           </div>
 
           <div className="weather-data container-2 ">
@@ -115,6 +117,7 @@ const Weather = () => {
       ) : (
         <></>
       )}
+      
     </div>
   );
 };
